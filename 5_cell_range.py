@@ -33,19 +33,42 @@ row_title = ws[1] #1번째 row만 가져오기
 #         print(cell.value, end = " ")
 #     print()
 
-from openpyxl.utils.cell import coordinate_from_string
+# from openpyxl.utils.cell import coordinate_from_string
 
-row_range = ws[2:ws.max_row]
+# row_range = ws[2:ws.max_row]
 
-for rows in row_range:
-    for cell in rows:
-        #print(cell.value, end=" ")
-        #print(cell.coordinate, end = " ")
-        xy = coordinate_from_string(cell.coordinate)
-        # print(xy, end= " ")
-        print(xy[0], end = "") # A
-        print(xy[1], end = " ") # 1
+# for rows in row_range:
+#     for cell in rows:
+#         #print(cell.value, end=" ")
+#         #print(cell.coordinate, end = " ")
+#         xy = coordinate_from_string(cell.coordinate)
+#         # print(xy, end= " ")
+#         print(xy[0], end = "") # A
+#         print(xy[1], end = " ") # 1
 
-    print()
-    
+#     print()
+
+#전체 rows
+# print(tuple(ws.rows))
+# for row in tuple(ws.rows):
+#     print(row[2].value)
+
+
+# 전체 columns
+#print(tuple(ws.columns))
+# for column in tuple(ws.columns):
+#     print(column[0].value)
+
+# for row in ws.iter_rows(min_row = 2, max_row=11, min_col=2, max_col=3): #전체 row 
+#     #print(row[0].value, row[1].value)
+#     print(row)
+
+for col in ws.iter_cols(min_row = 1, max_row=5, min_col=1, max_col=3):
+    print(col)
+# for column in ws.iter_cols():
+#     print(column[0].value)
+
+#row는 가로 줄을 가져온다 
+#col은 세로 줄을 가져온다.
+
 wb.save("sample.xlsx")
